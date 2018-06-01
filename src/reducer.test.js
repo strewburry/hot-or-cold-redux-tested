@@ -62,4 +62,18 @@ describe('reducer', () => {
             expect(state.correctAnswer).toEqual(correctAnswer);
         })
     })
+
+    describe('generateAuralUpdate', () => {
+        it('should generate aural updates', () => {
+            let state = {
+                guesses: [2, 4, 6, 8],
+                feedback: 'You\'re Ice Cold...',
+                auralStatus: ''
+            };
+            state = reducer(state, generateAuralUpdate());
+            expect(state.auralStatus).toEqual(
+                `Here's the status of the game right now: You're Ice Cold... You've made 4 guesses. In order of most- to least-recent, they are: 8, 6, 4, 2`
+            )
+        })
+    })
 })
