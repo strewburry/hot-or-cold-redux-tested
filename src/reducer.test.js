@@ -46,4 +46,20 @@ describe('reducer', () => {
             expect(state.feedback).toEqual('You got it!');
         })
     })
+
+    describe('restartGame', () => {
+        it('should reset game', () => {
+            let state = {
+                guesses: [2, 4, 6, 8, 10],
+                feedback: 'You got it!',
+                correctAnswer: 10
+            };
+            const correctAnswer = 100;
+            state = reducer(state, restartGame(correctAnswer));
+            expect(state.guesses).toEqual([]);
+            expect(state.feedback).toEqual('Make your guess!');
+            expect(state.auralStatus).toEqual('');
+            expect(state.correctAnswer).toEqual(correctAnswer);
+        })
+    })
 })
